@@ -2,6 +2,20 @@
 //Uppgift 2
 //
 
+try{
+    console.log("Före blocket:", x)
+} catch(e){
+    console.log("x är inte definieerad innan blocket(let)")
+}
+
+try{
+    console.log("Före blocket:", y)
+} catch(e){
+    console.log("x är inte definierad innan blocket(let)")
+}
+
+console.log("Före blocket z (var hoistad):", typeof z, z); //var är hoistad och definierad som undefined
+
 {
     let x = 10;
     const y = 20;
@@ -21,7 +35,7 @@ try{
     console.log("y är inte definierad utanför blocket(const)")
 }
 
-console.log("y finns kvar utanförblocket(var):")
+console.log("z finns kvar utanför blocket(var): ", typeof z);
 
 /*
 Reflektion uppgift 2:
@@ -49,10 +63,10 @@ Reflektion uppgift 2:
 //Uppgift 3
 //
 
-console.log("'3' == 3:", '3'== 3);      //True
-console.log("'3' === 3:", '3'=== 3);    //false
+console.log("'3' == 3:", '3'== 3);      //True (Typkonvertering)
+console.log("'3' === 3:", '3'=== 3);    //false (Ingen typkonvertering)
 
-console.log("'NaN' === NaN:", 'NaN'=== NaN);    //false
+console.log("'NaN' === NaN:", 'NaN'=== NaN);    //false, NaN är aldrig lika med sig själv
 
 console.log("'null' == undefined:", 'null'== undefined);    //true
 console.log("'null' === undefined:", 'null'=== undefined);  //false
@@ -114,11 +128,11 @@ const greetArrow = (name) => "Hej" + name;
 console.log(greetArrow("Mikaela"));
 
 
-//nytt block
+//nytt block som skuggar global 'name'
 {
     let name = "Erik";
     console.log("Inuti blocket:", name)
-    console.log(greet(name));
+    console.log("Greet med lokalt name", greet(name));
 
 }
 
