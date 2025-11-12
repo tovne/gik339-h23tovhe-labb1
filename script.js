@@ -50,7 +50,8 @@ console.log("undefined är:", check);
 
 /*
 Reflektion uppgift 3:
-
+    Skillnaden mellan == och === är ifall om man vill att det ska vara sant eller falskt, där == är sant och === är falskt.
+    
 
 */
 
