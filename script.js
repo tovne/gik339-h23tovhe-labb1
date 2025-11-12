@@ -2,6 +2,7 @@
 //Uppgift 2
 //
 
+//Testa blockets åtkomst.
 try{
     console.log("Före blocket:", x)
 } catch(e){
@@ -11,7 +12,7 @@ try{
 try{
     console.log("Före blocket:", y)
 } catch(e){
-    console.log("x är inte definierad innan blocket(let)")
+    console.log("x är inte definierad innan blocket(const)")
 }
 
 console.log("Före blocket z (var hoistad):", typeof z, z); //var är hoistad och definierad som undefined
@@ -24,13 +25,13 @@ console.log("Före blocket z (var hoistad):", typeof z, z); //var är hoistad oc
 }
 
 try{
-    console.log("Utanför blocket:", x)
+    console.log("Utanför blocket x:", x)
 } catch(e){
     console.log("x är inte definierad utanför blocket(let)")
 }
 
 try{
-    console.log("Utanför blocket:", y)
+    console.log("Utanför blocket y:", y)
 } catch(e){
     console.log("y är inte definierad utanför blocket(const)")
 }
@@ -66,10 +67,10 @@ Reflektion uppgift 2:
 console.log("'3' == 3:", '3'== 3);      //True (Typkonvertering)
 console.log("'3' === 3:", '3'=== 3);    //false (Ingen typkonvertering)
 
-console.log("'NaN' === NaN:", 'NaN'=== NaN);    //false, NaN är aldrig lika med sig själv
+console.log("NaN === NaN:", NaN=== NaN);    //false, NaN är aldrig lika med sig själv
 
-console.log("'null' == undefined:", 'null'== undefined);    //true
-console.log("'null' === undefined:", 'null'=== undefined);  //false
+console.log("null == undefined:", null== undefined);    //true
+console.log("null === undefined:", null=== undefined);  //false
 
 //Ternary operatior:
 let check = undefined ? "truthy": "falsy";
@@ -132,7 +133,7 @@ console.log(greetArrow("Mikaela"));
 {
     let name = "Erik";
     console.log("Inuti blocket:", name)
-    console.log("Greet med lokalt name", greet(name));
+    console.log("Greet med lokalt namn", greet(name));
 
 }
 
