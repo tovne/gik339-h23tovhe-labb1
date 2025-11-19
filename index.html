@@ -11,19 +11,19 @@
 	<h1>Lab 1 -</h1>
 	<p>This is a simple web page to demonstrate JavaScript functionality :D.</p>
 
-	<!--
+	<!--s
 	Reflektion uppgift 1:
 	1. Beskriver vilken betydelse placeringen av <script>-taggen har.
-	<script> placeras i <head> med attributet defer för att säkerställa att
-	skriptet laddas parallellt med HTML-dokumentet och exekveras först efter
-	att hela dokumentet har parsats. Detta förbättrar sidans laddningstid och
-	användarupplevelse genom att undvika blockering av rendering.
+	Placeringen påverkar när JavaScript körs. Om <script> ligger högt upp i dokumentet
+	kan koden starta innan HTML:en är färdigladdad vilket kan leda till fel om man
+	försöker använda elemen som inte i DOM än. Lägger man scriptet i slutet av <body>
+	så ska det köras först när allt innehåll är inläst.
 
 
 	2. Beskriver hur attributet defer fungerar
 	Med defer laddas skriptet parallellt med HTML-parsningen men exekveras
 	först efter att parsningen är klar. Defer-skript exekveras i dokumentordning
-	och innan DOMContentLoaded-eventet.
+	och innan DOM:en finns.
 	-->
 
 </body>

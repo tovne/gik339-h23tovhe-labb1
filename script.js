@@ -2,7 +2,7 @@
 //Uppgift 2
 //
 
-//Testa blockets åtkomst.
+//Testar blockets åtkomst.
 try{
     console.log("Före blocket:", x)
 } catch(e){
@@ -15,7 +15,8 @@ try{
     console.log("x är inte definierad innan blocket(const)")
 }
 
-console.log("Före blocket z (var hoistad):", typeof z, z); //var är hoistad och definierad som undefined
+//var är hoistad och definierad som undefined
+console.log("Före blocket z (var hoistad):", typeof z, z); 
 
 {
     let x = 10;
@@ -42,21 +43,18 @@ console.log("z finns kvar utanför blocket(var): ", typeof z);
 Reflektion uppgift 2:
     1. Beskriver hur var, let och const skiljer sig gällande block.
 
-    var är funktionsscoped, vilket betyder att den är tillgänglig inom hela funktionen
-    där den är deklarerad. Om den deklareras utanför en funktion så är den globalt
-    tillgänglig. let och const är blockscoped, vilket betyder att de endast är
-    tillgängliga inom det block (inom klamrar {}) där de är deklarerade.
+    let och const är blockscope, vilket betyder att de bara finns inuti det block {}
+    där de deklareras. var är däremot inte blockscope utan funktionsscope eller 
+    globalt om de ligger utanför en funktion. Därför går det att komma åt en var-variabel
+    även fast de är utanför blocket.
 
     2. Reflekterar över vad som händer vid olika placering av console.log() (före
     blocket, i blocket, efter blocket).
 
-    När console.log() placeras inom blocket så kan den komma åt variabler
-    deklarerade med let och const inom samma block. När console.log() placeras
-    utanför blocket så kan den inte komma åt variabler deklarerade med let och const
-    inom blocket, vilket leder till ett felmeddelande. Variabler deklarerade med var
-    är dock tillgängliga både inom och utanför blocket.
-
-
+    Inne i blocket fungerar det att logga alla variabler som deklarerats där. För let och
+    const fungerar det inte att logga de innan blocket eller efteråt. Efter som de inte 
+    finns utanför blocket. För att var fungerar det däremot både före och efter blocket eftersom
+    var inte är blockscope. 
 */
 
 
@@ -92,21 +90,18 @@ Reflektion uppgift 3:
     2. Förklarar vad som händer när ett uttryck står för sig självt i exempelvis en
     tenerary operator eller inom parenteserna hos en if-sats.
 
-    Det som händer är att uttrycket evalueras till ett truthy eller falsy värde,
+    Det som händer är att uttrycket evalueras till ett truthy eller falsy värde
     och beroende på det så körs antingen den första eller andra delen av
     ternary operatorn.
 
     3. Förklarar vad NaN, undefined och null representerar.
 
-    NaN står för Not a Number och representerar ett värde som inte är ett giltigt nummer.
+    NaN står för "Not a Number" och representerar ett värde som inte är ett giltigt nummer.
     Undefined representerar ett värde som inte har tilldelats något värde.
-    Null representerar avsaknaden av något värde eller objekt.
-
-
+    Null representerar avsaknaden av något värde eller objekt. Alltså kan de användas för att
+    medvetet representera att något saknar värde eller är tomt.
 
 */
-
-
 
 
 //
@@ -114,26 +109,26 @@ Reflektion uppgift 3:
 //
 
 function greet(name){
-    return "Hej" + name;
+    return "Hej " + name;
 }
 
 console.log(greet("Tove"));
 
 //variabel i global scope
 let name = "Lisa";
-console.log("Global variabel name:", name);
+console.log("Global variabel name: ", name);
 
 
 //arrow-function
-const greetArrow = (name) => "Hej" + name;
+const greetArrow = (name) => "Hej " + name;
 console.log(greetArrow("Mikaela"));
 
 
 //nytt block som skuggar global 'name'
 {
     let name = "Erik";
-    console.log("Inuti blocket:", name)
-    console.log("Greet med lokalt namn", greet(name));
+    console.log("Inuti blocket: ", name)
+    console.log("Greet med lokalt namn: ", greet(name));
 
 }
 
@@ -158,15 +153,16 @@ Reflektion uppgift 4:
     2. Reflekterar över vad du behöver tänka på gällande varifrån du kan anropa dina
     funktioner (innan/efter funktionerna har skapats).
 
-    Det man kan tänka på är att funktionsdeklarationer kan anropas innan de är definierade i koden,
-    medan funktionsuttryck och arrowfunktioner måste definieras innan de kan anropas.
+    Det man kan tänka på är att funktionsdeklarationer kan anropas både före och efter de är 
+    definierade i koden, medan funktionsuttryck och arrowfunktioner måste definieras innan de kan anropas.
 
     3. Förklararar vad som händer om du ändrar variabeln/parametern name i de olika
     situationerna och hur det påverkar utskrifterna på de olika ställena i koden.
 
-    Det som händer är att den letar efter den närmsta variabeln med namnet "name",
-    och använder den. Inuti blocket används den lokala variabeln "name" som är satt till "Erik",
-    medan utanför blocket används den globala variabeln "name" som är satt till "Lisa".
+    Variabler med samma namn påverkar inte varandra om de ligger på olika scope. I blockets
+    scope används det lokala name-värdet ("Erik"), medan det globala namnet ("Lisa") gäller
+    utanför blocket. Parametern i greet är också ett eget name och skuggar andra variabler. 
+
 
     4. Förklarar skillnaden mellan parameter, variabel och argument.
 
